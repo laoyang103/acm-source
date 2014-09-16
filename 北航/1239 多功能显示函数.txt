@@ -1,0 +1,67 @@
+#include <iostream>
+#include <cstdio>
+#include <cmath>
+using namespace std;
+int display(int a,int b)
+{
+	return a*b;
+}
+double display(double r)
+{
+	return 3.14*r*r;
+}
+double display(double a,double b,double c)
+{
+	if (a==0&&b==0&&c!=0)
+	{
+		return -1000000;
+	}
+	if (a==0&&b!=0)
+	{
+		return c/b;
+	}
+	if (a==0&&b==0&&c==0)
+	{
+		return 0;
+	}
+	if (b*b-4*a*c<0)
+	{
+		return -1000000;
+	}
+	else
+	{
+		return (-1*b-sqrt(b*b-4*a*c))/2.0/a;
+	}
+}
+int main()
+{
+	int n;
+	while(scanf("%d",&n)!=EOF)
+	{
+		int x,y;
+		double a,b,c,t;
+		switch(n)
+		{
+		case 1:
+			cin>>x>>y;
+			cout<<display(x,y)<<endl;
+			break;
+		case 2:
+			cin>>a;
+			printf("%.2f\n",display(a));
+			break;
+		case 3:
+			cin>>a>>b>>c;
+			t=display(a,b,c);
+			if (t==-1000000)
+			{
+				cout<<"no answer!\n";
+			}
+			else
+			{
+				printf("%.2f\n",t);
+			}
+		}
+	}
+	return 0;
+}

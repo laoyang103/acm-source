@@ -1,0 +1,31 @@
+#include <iostream>
+#include <set>
+#include <cstdio>
+using namespace std;
+int main()
+{
+	set<int> iset;
+	int t;
+	scanf("%d",&t);
+	while(t--)
+	{
+		iset.erase(iset.begin(),iset.end());
+		int n,tmp;
+		scanf("%d",&n);
+		while(n--)
+		{
+			scanf("%d",&tmp);
+			iset.insert(tmp);
+		}
+		cout<<iset.size()<<endl;
+		set<int>::iterator pos=iset.begin();
+		cout<<*pos;
+		pos++;
+		for (;pos!=iset.end();pos++)
+		{
+			cout<<" "<<*pos;
+		}
+		cout<<endl;
+	}
+	return 0;
+}

@@ -1,0 +1,45 @@
+找出两个数的最大值
+时间限制：1000 ms  |  内存限制：8192 KB 
+描述 
+编写一个程序。要求用户输入两个整数，获取用户输入的数，然后打印出较大的数。如果这两个数相等，则打印信息“These numbers are equal.” 。
+
+输入 
+输入第一行有一个整数 n，表示下面有 n 组数据。下面的 n 行，每行有两个用空格隔开的 int 类型整数。
+
+输出 
+输出有 n 行，每行输出对应的结果。
+
+样例输入 
+2
+14 14
+13 12
+样例输出 
+These numbers are equal.
+13
+
+
+#include<iostream>
+#include<algorithm>
+#include<sstream>
+#include<vector>
+#include<iomanip>
+using namespace std;
+int max(int a,int b)
+{
+	if(a>b) return a;
+	return b;
+}
+int main()
+{
+	int n;
+	cin>>n;
+	while(n--)
+	{
+		int a,b;
+		cin>>a>>b;
+		if(a==b)
+			cout<<"These numbers are equal."<<endl;
+		else cout<<max(a,b)<<endl;
+	}
+}
+//水啊。。

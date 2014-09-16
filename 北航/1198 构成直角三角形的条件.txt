@@ -1,0 +1,38 @@
+构成直角三角形的条件
+时间限制：1000 ms  |  内存限制：8192 KB 
+描述 
+读入3个非零整数后，判别这三个值是否可以表示一个直角三角形的三条边。
+
+输入 
+第一行是测试数据组数n。下面有n行，每行分别是用空格隔开的3个int类型整数，代表三角形的三条边。
+
+输出 
+输出为n行，对应第n行输入的结果。判断输入的三个值是否可以表示一个直角三角形的三条边，如果能则输出1，如果不能输出0。
+
+样例输入 
+2 
+3 4 5 
+5 6 1样例输出 
+1
+0
+
+#include<iostream>
+#include<algorithm>
+#include<sstream>
+#include<vector>
+#include<iomanip>
+using namespace std;
+int main()
+{
+	int n;
+	cin>>n;
+	while(n--)
+	{
+		int a,b,c;
+		cin>>a>>b>>c;
+		if(a<=0 || b<=0 ||c<=0) cout<<"0"<<endl;
+		else if(a+b<=c || a+c<=b || b+c<=a) cout<<"0"<<endl;
+		else if(a*a+b*b!=c*c && a*a+c*c!=b*b && b*b+c*c!=a*a) cout<<"0"<<endl;
+		else cout<<"1"<<endl;
+	}
+}

@@ -1,0 +1,63 @@
+#include <iostream>
+#include <cstdio>
+#include <string.h>
+using namespace std;
+int p[12];
+int queen[12][12];
+int count;
+int abs(int a)
+{
+	if (a>=0)
+	{
+		return a;
+	}
+	return -1*a;
+}
+bool collid(int k,int l)
+{
+	int i;
+	for (i=1;i<k;i++)
+	{
+		if (l==p[i]||abs(l-p[i])==abs(k-i))
+		{
+			return true;
+		}
+	}
+	return false;
+}
+void seek(int k,int n)
+{
+	int i;
+	for (i=1;i<=n;i++)
+	{
+		if (!collid(k,i))
+		{
+			if (k==n)
+			{
+				count++;
+			}
+			else
+			{
+				p[k]=i;
+				seek(k+1,n);
+			}
+		}
+		p[k]=0;
+	}
+}
+int main()
+{
+	int t;
+	scanf("%d",&t);
+	while(t--)
+	{
+		int n;
+		scanf("%d",&n);
+		memset(p,0,sizeof(p));
+		memset(queen,0,sizeof(queen));
+		count=0;
+		seek(1,n);
+		printf("%d\n",count);
+	}
+	return 0;
+}

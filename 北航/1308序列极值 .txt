@@ -1,0 +1,25 @@
+#include <iostream>
+#include <cstdio>
+#include <algorithm>
+#include <vector>
+using namespace std;
+int main()
+{
+	int t;
+	cin>>t;
+	int tmp;
+	while(t--)
+	{
+		vector<int> ivec;
+		int n,i;
+		cin>>n;
+		for (i=1;i<=n;i++)
+		{
+			cin>>tmp;
+			ivec.push_back(tmp);
+		}
+		sort(ivec.begin(),ivec.end());
+		cout<<ivec[0]<<" "<<ivec[n-1]<<endl;
+	}
+	return 0;
+}

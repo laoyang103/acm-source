@@ -1,0 +1,65 @@
+隐藏的北航
+时间限制：1000 ms  |  内存限制：65536 KB 
+描述 
+ACM国际大学生程序设计竞赛（ACM International Collegiate Programming Contest – ACM-ICPC）由国际计算机学界著名的ACM学会（Association for Computer Machinery）主办，是世界上规模最大、水平最高的国际大学生程序竞赛。每年举办一次。ACM成立于计算机诞生次年，是目前计算机学界中历史最悠久、最具权威性的组织。 
+
+
+ACM国际性大学生程序设计竞赛自1970年开始，其宗旨是使大学生能通过计算机充分展示自己分析问题和解决问题的能力。参加本项比赛的选手至少需要掌握计算机科学的常用算法，基本的计算理论，（如：离散数学，具体数学，组合数学基础），数据结构基础，程序设计语言（规定是C/C++或者是Java）。在本项比赛中考察学生的不仅仅是能够完成指定任务的程序，更要求在完成程序的功能的基础之上提高程序的运行效率与空间占用率。从数学角度考虑，题目主要的方向集中在工程数学，抽象数学很少涉及。一般题目都会给出要求和几组输入和输出作为程序设计的参考，也是检验程序正确性的标准之一。 
+
+
+为了能够让大家切实原汁原味的ACM-ICPC竞赛试题是什么样的，我们模仿该项赛事的出题风格为大家奉献一道具有启发性的好题。希望这题能成为大家投身程序设计竞赛的良好开端。题目描述如下： 
+
+
+Given a string of uppercase letters, is it possible to erase one or more characters to get the string 'BUAA'? 
+
+输入 
+The first line contains a single integer T(1<=T<=15), the number of test cases.
+Each test case is a single line containing at least 1 and at most 100 uppercase letters. 
+There are no spaces, TABs, lowercase letters or other characters before, or after the string.
+
+
+输出 
+For each test case, print the case number and 'Yes' if it is possible to get 'BUAA', or 'No' otherwise. 
+The output is case-sensitive, so don't output 'YES' or 'yes' when 'Yes' should be output.
+
+
+样例输入 
+4
+ACMBUAA
+ACMAAUB
+HELLOWORLD
+BUACMA样例输出 
+Case 1: Yes
+Case 2: No
+Case 3: No
+Case 4: Yes
+
+#include<iostream>
+#include<algorithm>
+#include<sstream>
+#include<vector>
+#include<iomanip>
+using namespace std;
+int main()
+{
+	int n,m=1;
+	cin>>n;
+	while(n--)
+	{
+		string s;
+		cin>>s;
+		int i,j=1;
+		for(i=0;i<s.length();i++)
+		{
+			if(j==1 && s[i]=='B') j++;
+			else if(j==2 && s[i]=='U') j++;
+			else if(j==3 && s[i]=='A') j++;
+			else if(j==4 && s[i]=='A') {j++;break;}
+		}
+		if(j==5 && s.length()!=4) cout<<"Case "<<m<<": Yes"<<endl;
+		else cout<<"Case "<<m<<": No"<<endl;
+		m++;
+	}
+		return 0;
+}
+//此题描述太**了。。。一定要擦去才行，就是说BUAA是输出No的。。。

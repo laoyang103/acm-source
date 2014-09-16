@@ -1,0 +1,46 @@
+谁是最大数
+时间限制：1000 ms  |  内存限制：8192 KB 
+描述 
+确定用户输入的m个整数中的最大的数。
+
+输入 
+先给出数据的组数T，对于每组数据，输入有两行，第一行是用户要输入的整数个数m， 第二行为m个用空格隔开的整数。
+
+输出 
+每组数据输出只有一行，为用户输入的m个数中最大的数。
+
+样例输入 
+2
+5
+2 3 7 5 3
+2
+－1 －9
+样例输出 
+7
+－1
+
+#include<iostream>
+#include<algorithm>
+#include<sstream>
+#include<vector>
+#include<iomanip>
+using namespace std;
+int main()
+{
+	int n;
+	cin>>n;
+	while(n--)
+	{
+		int a[100000],i,m;
+		cin>>m;
+		for(i=1;i<=m;i++)
+			cin>>a[i];
+		int min=a[1],max=a[1];
+		for(i=2;i<=m;i++)
+		{
+			if(a[i]<min) min=a[i];
+			if(a[i]>max) max=a[i];
+		}
+		cout<<max<<endl;
+	}
+}

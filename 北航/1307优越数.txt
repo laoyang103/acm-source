@@ -1,0 +1,20 @@
+#include <iostream>
+#include <cstdio>
+using namespace std;
+int main()
+{
+	int t;
+	scanf("%d",&t);
+	double a,b,c,d;
+	while(t--)
+	{
+		scanf("%lf%lf%lf",&a,&b,&c);
+		d=(a+b+c)/3;
+		if ((a>d&&b>d)||(a>d&&c>d)||(b>d&&c>d))
+		{
+			cout<<"Yes"<<endl;
+		}
+		else cout<<"No"<<endl;
+	}
+	return 0;
+} 

@@ -1,0 +1,27 @@
+#include <iostream>
+#include <cstdio>
+using namespace std;
+int a[100001];
+int main()
+{
+	int t;
+	scanf("%d",&t);
+	int x,n,i;
+	while(t--)
+	{
+		scanf("%d%d",&x,&n);
+		for (i=0;i<=n;i++)
+		{
+			scanf("%d",&a[i]);
+		}
+		int final=0;
+		for (i=n;i>=1;i--)
+		{
+			final=(a[i]+final)%2008;
+			final=(final*x)%2008;
+		}
+		final=(final+a[0])%2008;
+		printf("%d\n",final);
+	}
+	return 0;
+}

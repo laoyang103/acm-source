@@ -1,0 +1,25 @@
+#include <iostream>
+#include <cstdio>
+#include <vector>
+#include <string>
+#include <algorithm>
+using namespace std;
+int main()
+{
+	vector<string> stvec;
+	int t;
+	string str;
+	cin>>t;
+	while(t--)
+	{
+		cin>>str;
+		stvec.push_back(str);
+	}
+	sort(stvec.begin(),stvec.end());
+	vector<string>::iterator pos;
+	for (pos=stvec.begin();pos!=stvec.end();pos++)
+	{
+		cout<<*pos<<endl;
+	}
+	return 0;
+} 

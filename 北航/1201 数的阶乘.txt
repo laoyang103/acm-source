@@ -1,0 +1,38 @@
+数的阶乘
+时间限制：1000 ms  |  内存限制：8192 KB 
+描述 
+给定一个正整数m，打印它的阶乘。
+
+输入 
+第一行是测试数据组数n，下面n行每一行是一个正整数。
+
+输出 
+输出有n行，分别为对应输入数的阶乘。
+
+样例输入 
+2
+4
+5样例输出 
+24
+120
+
+#include<iostream>
+#include<algorithm>
+#include<sstream>
+#include<vector>
+#include<iomanip>
+using namespace std;
+int main()
+{
+	int n;
+	cin>>n;
+	while(n--)
+	{
+		int m;
+		cin>>m;
+		int sum=1,i;
+		for(i=2;i<=m;i++)
+			sum*=i;
+		cout<<sum<<endl;
+	}
+}

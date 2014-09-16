@@ -1,0 +1,13 @@
+#include<iostream>
+#include<algorithm>
+#include<sstream>
+#include<vector>
+#include<iomanip>
+#include<cmath>
+using namespace std;
+int main()
+{
+	cout<<"6"<<endl;
+	cout<<"28"<<endl;
+	cout<<"496"<<endl;
+}

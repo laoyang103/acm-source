@@ -1,0 +1,77 @@
+乘法运算的程序
+时间限制：1000 ms  |  内存限制：65536 KB 
+描述 
+从键盘读入个100以内的正整数,进行乘法计算并输出。
+
+输入 
+多组测试数据，每组测试数据包括两个整数m,n仅一行，以0 0 结尾。两个数的第一位和最后一位都不是0.
+
+输出 
+输出格式: 两个乘数的末位数对齐 乘号后面紧跟着第二个乘数,线的长度以最长的数的位数为准,每两组测试数据中间，输出一个空行。
+
+样例输入 
+89 13
+2 3
+0 0
+样例输出 
+  89
+ x13
+----
+ 267
+ 89
+----
+1157
+
+ 2
+x3
+--
+ 6
+来源 
+NOIP96 
+
+#include<iostream>
+#include<algorithm>
+#include<sstream>
+#include<vector>
+#include<iomanip>
+using namespace std;
+int main()
+{
+	int a,b,m=0;
+	while(cin>>a>>b &&(a+b!=0))
+	{
+		int first,second,sum;
+		first=a*(b%10);
+		second=a*(b/10);
+		sum=a*b;
+		int weishu=0,wb=0,temp=sum;
+		while(temp)
+		{
+			temp/=10;
+			weishu++;
+		}
+		
+		temp=b;
+		while(temp)
+		{
+			temp/=10;
+			wb++;
+		}
+		if(weishu==wb) weishu=wb+1;
+		if(m) cout<<endl;
+		cout<<setw(weishu)<<a<<endl;
+		cout<<string(weishu-wb-1,' ')<<"x"<<b<<endl;
+		cout<<string(weishu,'-')<<endl;
+		cout<<setw(weishu)<<first<<endl;
+		if(second!=0)
+		{
+		cout<<setw(weishu-1)<<second<<endl;
+		cout<<string(weishu,'-')<<endl;
+		cout<<setw(weishu)<<sum<<endl;
+		}
+		m++;
+	}
+	return 0;
+}
+
+//AC at the first time^_^

@@ -1,0 +1,56 @@
+#include <iostream>
+#include <cstdio>
+#include <vector>
+#include <algorithm>
+#include <string.h>
+using namespace std;
+struct node 
+{
+	int num;
+	int count;
+	node(int n)
+	{
+		num=n;
+		count=1;
+	}
+};
+int main()
+{
+	int t;
+	vector<node> ivec;
+	while(1)
+	{
+		ivec.clear();
+		scanf("%d",&t);
+		if (!t)
+		{
+			break;
+		}
+		int tmp,i;
+		while(t--)
+		{
+			scanf("%d",&tmp);
+			node n(tmp);
+			int flag=1;
+			for (i=0;i<ivec.size();i++)
+			{
+				if (tmp==ivec[i].num)
+				{
+					ivec[i].count++;
+					flag=0;
+					break;
+				}
+			}
+			if (flag)
+			{
+				ivec.push_back(n);
+			}
+		}
+		for (i=0;i<ivec.size();i++)
+		{
+			printf("%d %d\n",ivec[i].num,ivec[i].count);
+		}
+		printf("\n");
+	}
+	return 0;
+}

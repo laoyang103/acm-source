@@ -1,0 +1,39 @@
+自然数对
+时间限制：1000 ms  |  内存限制：8192 KB 
+描述 
+知道2个自然数A，B，如果A+B，A-B都是平方数，那么A，B就是自然数对。要求写程序判断给定的2个数A，B是否为自然数对。
+
+输入 
+第一行有1个整数T，表示有T组测试数据。第二行～第T+1行，每行有2个数据A，B，其中0<=A+B<=2^31。
+
+输出 
+对于每组测试数据输出一行，包含"YES"或者"NO"。"YES"表示该数对是自然数对，否则输出"NO"。
+
+样例输入 
+2
+17 8
+3 1样例输出 
+YES
+NO
+
+#include<iostream>
+#include<algorithm>
+#include<sstream>
+#include<vector>
+#include<iomanip>
+#include<cmath>
+using namespace std;
+int main()
+{
+	int n;
+	cin>>n;
+	while(n--)
+	{
+		int a,b;
+		cin>>a>>b;
+		int add=a+b,addd=a-b;
+		if(sqrt(add*1.0)*sqrt(add*1.0)==add && sqrt(addd*1.0)*sqrt(addd*1.0)==addd)
+			cout<<"YES"<<endl;
+		else cout<<"NO"<<endl;
+	}
+}

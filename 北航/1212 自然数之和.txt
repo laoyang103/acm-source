@@ -1,0 +1,36 @@
+自然数之和
+时间限制：1000 ms  |  内存限制：8192 KB 
+描述 
+给一个N，计算S=1+2+…+N。
+
+输入 
+第一行有1个整数T，表示有T组测试数据。第二行～第T+1行，每行包含一个整数N，其中1<=N<=5000。
+
+输出 
+对于每组数据输出一行，包含一个整数S。
+
+样例输入 
+2
+3
+5样例输出 
+6
+15
+
+#include<iostream>
+#include<algorithm>
+#include<sstream>
+#include<vector>
+#include<iomanip>
+#include<cmath>
+using namespace std;
+int main()
+{
+	int n;
+	cin>>n;
+	while(n--)
+	{
+		int a;
+		cin>>a;
+		cout<<(1+a)*a/2<<endl;
+	}
+}

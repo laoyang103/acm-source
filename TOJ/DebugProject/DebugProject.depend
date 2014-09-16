@@ -1,0 +1,5 @@
+# depslib dependency file v1.0
+1303988065 source:e:\acm\acmspace\toj\debugproject\main.c
+	<stdio.h>
+	<stdlib.h>
+

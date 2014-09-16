@@ -1,0 +1,128 @@
+棋盘问题
+时间限制：1000 ms  |  内存限制：65536 KB 
+描述 
+输入三个自然数n,i,j(1<=i<=n,1<=j<=n).n表示有一个n行n列的棋盘格子，（i,j)表示棋盘中格子的位置如：n=4,i=2,j=3表示了棋盘中的第二行第三列的格子，如下图：
+
+
+(2,3)表示该格为第2行第3列
+
+要求编制一个程序，根据输入的n,i,j的值，输出与格子(i,j)在同一行、同一列、同一对角线上的所有格子位置，例如：当n=4,i=2,j=3时，输出的结果是： (2,1)(2,2)(2,3)(2,4) {同一行格子的位置} (1,3)(2,3)(3,3)(4,3) {同一列格子的位置} (1,2)(2,3)(3,4) {左上到右下对角线上的格子位置} (4,1)(3,2)(2,3)(1,4) {左下到右上对角线上的格子位置} 
+
+输入 
+包含多组数据, n=? i=? j=? 每个数一行以n=0结束
+
+输出 
+根据输入的n,i,j的值，输出与格子(i,j)在同一行、同一列、同一对角线上的所有格子位置每组测试数据输入四行,分别是: {同一行格子的位置} {同一列格子的位置} {左上到右下对角线上的格子位置} {左下到右上对角线上的格子位置}
+
+每个位置用一个半角小括号括起来,相邻的位置之间没有别的字符
+
+样例输入 
+n=4
+i=2
+j=3
+
+
+
+
+
+
+
+
+
+
+
+
+
+样例输出 
+(2,1)(2,2)(2,3)(2,4)
+(1,3)(2,3)(3,3)(4,3)
+(1,2)(2,3)(3,4)
+(4,1)(3,2)(2,3)(1,4)
+
+
+
+
+
+
+
+
+
+
+
+
+
+来源 
+NOIP96(by Rz) 
+
+#include<iostream>
+#include<algorithm>
+#include<sstream>
+#include<vector>
+#include<iomanip>
+using namespace std;
+int main()
+{
+	int n,i,j;
+	char c;
+	while(cin>>c>>c>>n && n)
+	{
+		cin>>c>>c>>i>>c>>c>>j;
+		int k,l,m;
+		for(k=1;k<=n;k++)
+			cout<<"("<<i<<","<<k<<")";
+		cout<<endl;
+		for(k=1;k<=n;k++)
+			cout<<"("<<k<<","<<j<<")";
+		cout<<endl;
+		if(i==j)
+		{
+			for(k=1;k<=n;k++)
+				cout<<"("<<k<<","<<k<<")";
+			cout<<endl;
+			int tempi=i,tempj=j;
+			while(tempi!=n && tempj!=1)
+			{
+				tempi++;tempj--;
+			}
+			int tempii=i,tempjj=j;
+			while(tempii!=1 && tempjj!=n)
+			{
+				tempii--;tempjj++;
+			}
+			for(k=1;k<=tempi-tempii+1;k++)
+				cout<<"("<<tempjj-k+1<<","<<tempii+k-1<<")";
+			cout<<endl;
+		}
+		else
+		{
+			int tempi=i,tempj=j;
+			while(tempi!=1 && tempj!=1)
+			{
+				tempi--;tempj--;
+			}
+			int tempii=i,tempjj=j;
+			while(tempii!=n && tempjj!=n)
+			{
+				tempii++;tempjj++;
+			}
+			for(k=1;k<=tempii-tempi+1;k++)
+				cout<<"("<<tempi+k-1<<","<<tempj+k-1<<")";
+			cout<<endl;
+			tempi=i,tempj=j;
+			while(tempi!=n && tempj!=1)
+			{
+				tempi++;tempj--;
+			}
+			tempii=i,tempjj=j;
+			while(tempii!=1 && tempjj!=n)
+			{
+				tempii--;tempjj++;
+			}
+				for(k=1;k<=tempi-tempii+1;k++)
+				cout<<"("<<tempjj-k+1<<","<<tempii+k-1<<")";
+			cout<<endl;
+		}
+	}
+		return 0;
+}
+//这个题编得我累死了。。。起码得有n分钟，40<n<60

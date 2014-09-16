@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1303562892 source:e:\acm\acmspace\toj\debugcplusproject\main.cpp
+	<cstdio>
+	<queue>
+	<cstring>
+

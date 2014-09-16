@@ -1,0 +1,18 @@
+#include <iostream>
+#include <cstdio>
+#include <cmath>
+using namespace std;
+double f(double x)
+{
+	return cos(x)-x;
+}
+int main()
+{
+	double x = 3.14159/4;
+	while(fabs(f(x))>1e-8)
+	{
+		x=x+f(x)/(sin(x)+1);
+	}
+	printf("%.6lf\n",x);
+	return 0;
+}

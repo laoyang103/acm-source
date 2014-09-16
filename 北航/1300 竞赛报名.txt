@@ -1,0 +1,79 @@
+竞赛报名
+时间限制：1000 ms  |  内存限制：65536 KB 
+描述 
+北航将要举办第四届程序设计竞赛，参赛选手均通过网上报名的方式来报名。但是，有些同学可能由于报名时填错了信息，会又填一次报名表，给参赛组织者带来了一定的麻烦。于是，参赛组织者想统计每个同学报名了多少次，以便于手工核对报名信息。
+
+输入 
+本题有多组测试数据。输入的第一行为报名的个数，最多1000。接下来每行有一个学号，为北航本科生八位学号。输入数据以0结尾。
+
+输出 
+对每组输入数据，按照输入数据中的学号第一次出现的顺序，输出该学号和出现的次数，用空格隔开。每两组数据之间空一行。
+
+样例输入 
+7
+35211312
+36211625
+35211425
+35211425
+35211425
+36211625
+36211625
+2
+35211425
+35211425
+0样例输出 
+35211312 1
+36211625 3
+35211425 3
+
+35211425 2
+
+#include<iostream>
+#include<string>
+#include<algorithm>
+#include<iomanip>
+#include<cmath>
+#include<vector>
+using namespace std;
+struct qiueji
+{
+	string number;
+	int level,time;
+};
+bool mycom(qiueji a,qiueji b)
+{
+	return a.level<b.level;
+}
+int main()
+{
+	int t,m=0;
+	while(cin>>t && t)
+	{
+		vector<qiueji> v;
+		int i,j,level=1;
+		for(i=1;i<=t;i++)
+		{
+			string s;
+			cin>>s;
+			int judge=0;
+			for(j=0;j<v.size();j++)
+				if(s==v[j].number) {judge++;break;}
+			if(judge) v[j].time++;
+			else
+			{
+				qiueji temp;
+				temp.number=s;
+				temp.level=level;
+				level++;
+				temp.time=1;
+				v.push_back(temp);
+			}
+		}
+		sort(v.begin(),v.end(),mycom);
+		if(m) cout<<endl;
+		for(i=0;i<v.size();i++)
+			cout<<v[i].number<<" "<<v[i].time<<endl;
+		m++;
+	}
+	return 0;
+}

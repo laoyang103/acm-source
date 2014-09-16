@@ -1,0 +1,23 @@
+#include <iostream>
+#include <cstdio>
+#include <string>
+using namespace std;
+string s;
+int main()
+{
+	int n,i;
+	cin>>n;
+	int len=0;
+	getline(cin,s);
+	while(n--)
+	{
+		getline(cin,s);
+		len= s.length();
+		for (i=len-2;i>=0;i--)
+		{
+			printf("%c",s[i]);
+		}
+		printf("\n");
+	}
+	return 0;
+}

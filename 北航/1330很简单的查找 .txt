@@ -1,0 +1,20 @@
+#include <stdio.h>
+int main()
+{
+	int n,t,i;
+	scanf("%d",&n);
+	char s[1000000];
+	while(n--)
+	{
+		scanf("%d%s",&t,s);
+		for (i=0;i<t;i++)
+		{
+			if (s[i]=='1')
+			{
+				printf("%d\n",i+1);
+				break;
+			}
+		}
+	}
+	return 0;
+}

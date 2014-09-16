@@ -1,0 +1,22 @@
+#include<iostream>
+#include<sstream>
+#include<algorithm>
+#include<iomanip>
+#include<cmath>
+#include<vector>
+#include<stdio.h>
+using namespace std;
+int main()
+{
+	string s;
+	while(getline(cin,s))
+	{
+		istringstream sin(s);
+		int a,sum=0;
+		while(sin>>a)
+			sum+=a;
+		cout<<sum<<endl;
+	}
+	return 0;
+}
+

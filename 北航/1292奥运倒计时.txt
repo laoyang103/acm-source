@@ -1,0 +1,61 @@
+#include <iostream>
+#include <sstream>
+#include <string>
+using namespace std;
+int mon[2][12]={31,28,31,30,31,30,31,31,30,31,30,31,31,29,31,30,31,30,31,31,30,31,30,31};
+int ye[2]={365,366};
+int Type(int year)
+{
+	int flag=0;
+	if ((year%4==0&&year%100!=0)||year%400==0)
+	{
+		flag=1;
+	}
+	return flag;
+}
+int DaysOfYear(int year,int month, int day)
+{
+	int total=0,i;
+	
+	for ( i=0;i<month-1;i++)
+	{
+		total+=mon[Type(year)][i];
+	}
+	total+=day;
+	return total;
+}
+int main()
+{
+	string s;
+	int month,year,day;
+	char c;
+	int total;
+	while (1)
+	{
+		getline(cin,s);
+		istringstream is(s);
+		is>>year>>c>>month>>c>>day;
+		if (year>2008||year==2008&&month>8||year==2008&&month==8&&day>8)
+		{
+			cout<<-1<<endl;
+			continue;
+		}
+		if (year==2008&&month==8&&day==8)
+		{
+			cout<<0<<endl;
+			continue;
+		}
+		if (year==0&&month==0&&day==0)
+		{
+			break;
+		}
+		total=0;
+		for (int i=year;i<2008;i++)
+		{
+			total+=ye[Type(i)];
+		}
+		total+=DaysOfYear(2008,8,8)-DaysOfYear(year,month,day);
+		cout<<total<<endl;
+	}
+	return 0;
+}

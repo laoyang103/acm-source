@@ -1,0 +1,49 @@
+组合数
+时间限制：1000 ms  |  内存限制：8192 KB 
+描述 
+求C(N, M)，即求M个数中选N个数的组合方案数。
+
+输入 
+第一行一个正整数T （T<=10）， 表示有T组测试数据。第二行～第T+1行，每行有2个正整数N，M （1<=N, M<=20）。
+
+输出 
+对于每组输入N，M，输出一行，该行有一个数，为C(N, M)值。
+
+样例输入 
+2
+3 5
+1 20
+
+样例输出 
+10
+20
+提示 
+数据类型用long int定义
+
+
+#include<iostream>
+#include<algorithm>
+#include<sstream>
+#include<vector>
+#include<iomanip>
+using namespace std;
+long int combi(int a,int b)
+{
+	if(a==1) return b;
+	return combi(a-1,b-1)*b/a;
+}
+int main()
+{
+	int n;
+	cin>>n;
+	while(n--)
+	{
+		int a,b;
+		cin>>a>>b;
+        if(a==0 && b>0)cout<<"1"<<endl;
+		else
+		cout<<combi(a,b)<<endl;
+	}
+		return 0;
+}
+//此题描述有错，当a=0时，输出1

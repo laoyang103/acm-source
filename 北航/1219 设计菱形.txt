@@ -1,0 +1,24 @@
+#include<iostream>
+#include<algorithm>
+#include<sstream>
+#include<vector>
+#include<iomanip>
+#include<cmath>
+using namespace std;
+int main()
+{
+	int n,i;
+	cin>>n;
+	for(i=1;i<=n;i++)
+	{
+		int m;
+		cin>>m;
+		int j;
+		for(j=1;j<=(m-1)/2;j++)
+		cout<<string((m-2*j+1)/2,'-')<<string(2*j-1,'*')<<string((m-2*j+1)/2,'-')<<endl;
+		cout<<string(m,'*')<<endl;
+		for(j=1;j<=(m-1)/2;j++)
+		cout<<string(j,'-')<<string(m-j*2,'*')<<string(j,'-')<<endl;
+	}
+	return 0;
+}

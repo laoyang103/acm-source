@@ -1,0 +1,33 @@
+#include<iostream>
+#include<sstream>
+#include<algorithm>
+#include<iomanip>
+#include<cmath>
+#include<vector>
+#include<stdio.h>
+using namespace std;
+bool mycom(int a,int b)
+{
+	return a>b;
+}
+int main()
+{
+	int n;
+	cin>>n;
+	while(n--)
+	{
+		int a,b;
+		cin>>a>>b;
+		vector<int> v;
+		int i,j;
+		for(i=1;i<=a;i++)
+		{
+			cin>>j;
+			v.push_back(j);
+		}
+		sort(v.begin(),v.end(),mycom);
+		cout<<v[b-1]<<endl;
+	}
+	return 0;
+}
+

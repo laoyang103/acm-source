@@ -1,0 +1,62 @@
+#include <iostream>
+#include <cstdio>
+#include <string>
+#include <string.h>
+#include <algorithm>
+#include <vector>
+using namespace std;
+struct buck 
+{
+	int num;
+	int time;
+	buck(int n,int t)
+	{
+		num=n;
+		time=t;
+	}
+};
+class cmp
+{
+public:
+	bool operator()(const buck& b1,const buck & b2)
+	{
+		return b1.time < b2.time;
+	}
+};
+int main()
+{
+	vector<buck> ivec;
+	int t,n,i,tmp;
+	cin>>t;
+	while(t--)
+	{
+		ivec.clear();
+		cin>>n;
+		int sum=0,total=0;
+		for (i=1;i<=n;i++)
+		{
+			cin>>tmp;
+			buck b(i,tmp);
+			ivec.push_back(b);
+		}
+		stable_sort(ivec.begin(),ivec.end(),cmp());
+		vector<buck>::iterator pos;
+		pos=ivec.begin();
+		cout<<pos->num;
+		pos++;
+		for (;pos!=ivec.end();pos++)
+		{
+			cout<<" "<<pos->num;
+		}
+		cout<<endl;
+		for (i=0;i<n;i++)
+		{
+			sum+=ivec[i].time;
+			total+=sum;
+		}
+		total-=sum;
+		double d=(double)total/n;
+		printf("%.2lf\n",d);
+	}
+	return 0;
+}

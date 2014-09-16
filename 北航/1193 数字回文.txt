@@ -1,0 +1,35 @@
+数字回文
+时间限制：1000 ms  |  内存限制：8192 KB 
+描述 
+“回文”是一种特殊的数或者文字短语。他们无论是顺读还是倒读，结果都一样。例如：12321， 55555，45554。读入一个5位整数，判断它是否是回文数。
+
+输入 
+多组测试数据，每组一行，一个五位整数，数据以0结尾。
+
+输出 
+对每组输入数据输出一行，如果输入数是回文数，输出“Yes.” ，否则输出 “No.” 。
+
+样例输入 
+12345
+12321
+11111
+0样例输出 
+No.
+Yes.
+Yes.
+
+#include<iostream>
+#include<algorithm>
+#include<sstream>
+#include<vector>
+#include<iomanip>
+using namespace std;
+int main()
+{
+	int n;
+	while(cin>>n && n)
+	{
+		if(n/10000==n%10 && (n/1000)%10==(n/10)%10) cout<<"Yes."<<endl;
+		else cout<<"No."<<endl;
+	}
+}

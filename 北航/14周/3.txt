@@ -1,0 +1,31 @@
+C语言实验——保留字母 
+Time Limit: 1000MS Memory limit: 65536K 
+题目描述
+编一个程序，输入一个字符串，将组成字符串的所有非英文字母的字符删除后输出。
+输入
+一个字符串，长度不超过80个字符。
+输出
+删掉非英文字母后的字符串。
+示例输入
+abc123+xyz.5
+示例输出
+abcxyz
+来源
+ZJGSU
+
+#include <stdio.h>
+#include <string.h>
+int main()
+{
+	char a[85];
+	gets(a);
+	int len = strlen(a);
+	int i;
+	for(i = 0;i<len;i++)
+		if((a[i] >= 'a' && a[i] <= 'z') || 
+		  (a[i] >= 'A' && a[i] <= 'Z'))
+		  putchar(a[i]);
+		else continue;
+	puts("");
+    return 0;
+}

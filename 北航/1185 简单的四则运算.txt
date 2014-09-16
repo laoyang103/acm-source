@@ -1,0 +1,36 @@
+简单的四则运算
+时间限制：1000 ms  |  内存限制：65536 KB 
+描述 
+编写一个程序，要求用户输入两个整数，输出这两个数的和、乘积、差和商。
+
+输入 
+输入第一行有一个整数n，表示下面有n组数据。下面的n行，每行包括用空格隔开的两个int类型整数。
+
+输出 
+输出n行，每行四个整数，分别为相应两个输入数的和、乘积、差和商，用空格隔开。
+
+样例输入 
+2
+24 3
+1 1
+样例输出 
+27 72 21 8
+2 1 0 1
+
+#include<iostream>
+#include<algorithm>
+#include<sstream>
+#include<vector>
+#include<iomanip>
+using namespace std;
+int main()
+{
+	int n;
+	cin>>n;
+	while(n--)
+	{
+		int a,b;
+		cin>>a>>b;
+		cout<<a+b<<" "<<a*b<<" "<<a-b<<" "<<a/b<<endl;
+	}
+}

@@ -1,0 +1,34 @@
+数列求和 
+Time Limit: 1000MS Memory limit: 4096K 
+题目描述
+数列求和是一类常见的问题，本题有一定的代表性：
+求s=a+aa+aaa+aaaa+……+aa…aa(n位）
+其中，a的值由键盘输入，位数n也由键盘输入。
+输入
+第一行输入a的值；
+第二行输入位数n。
+输出
+输出对n个数完成求和运算后的结果。
+比如a=3，n=6时，s=3+33+333+3333+33333+333333
+示例输入
+3
+6
+示例输出
+370368
+
+
+#include<stdio.h>
+
+int main()
+{
+	int s,n,i,sum,tmp;
+	scanf("%d%d",&s,&n);
+	for(i = 1,sum = tmp = s;i<n;i++)
+	{
+		s *= 10;
+		s += tmp;
+		sum += s;
+	}
+	printf("%d\n",sum);
+	return 0;
+}

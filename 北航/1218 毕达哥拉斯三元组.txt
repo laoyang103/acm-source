@@ -1,0 +1,22 @@
+#include<iostream>
+#include<algorithm>
+#include<sstream>
+#include<vector>
+#include<iomanip>
+#include<cmath>
+using namespace std;
+int main()
+{
+	int i,j,k;
+	for(i=3;i<=498;i++)
+	{
+		for(j=i+1;j<=499;j++)
+		{
+			for(k=j+1;k<=500;k++)
+				if(i+j<=k) break;
+				else if(i*i+j*j==k*k)
+					cout<<i<<" "<<j<<" "<<k<<endl;
+		}
+	}
+	return 0;
+}

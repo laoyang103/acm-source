@@ -1,0 +1,43 @@
+找出5个数的极值
+时间限制：1000 ms  |  内存限制：8192 KB 
+描述 
+读入5个整数，输出他们中的最小值和最大值。
+
+输入 
+输入第一行有一个整数n，表示下面有n组数据。下面的n行，每行包括用空格隔开的5个int类型整数。
+
+输出 
+输出有n行，每行分别是这5个数的最大值和最小值，两个数用空格隔开。
+
+样例输入 
+2
+12 13 14 15 16
+1 2 3 4 5
+样例输出 
+16 12
+5 1
+
+#include<iostream>
+#include<algorithm>
+#include<sstream>
+#include<vector>
+#include<iomanip>
+using namespace std;
+int main()
+{
+	int n;
+	cin>>n;
+	while(n--)
+	{
+		int a[6],i;
+		for(i=1;i<=5;i++)
+			cin>>a[i];
+		int min=a[1],max=a[1];
+		for(i=2;i<=5;i++)
+		{
+			if(a[i]<min) min=a[i];
+			if(a[i]>max) max=a[i];
+		}
+		cout<<max<<" "<<min<<endl;
+	}
+}

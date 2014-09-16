@@ -1,0 +1,33 @@
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{
+	int n;
+	cin>>n;
+	while(n--)
+	{
+	int a,b;
+	cin>>a>>b;
+	{
+		int min=0,gongyue,jishu=1;
+		if(a<=b)
+			min=a;
+		else
+			min=b;
+		for (int i=2;i<=min;i++)
+		{
+			if (a%i==0 && b%i==0)
+			{
+				gongyue=i;
+				jishu=0;
+			}
+		}
+		if (jishu==0)
+		cout<<gongyue<<endl;
+		else
+			cout<<jishu<<endl;
+	}
+	}
+	return 0;
+}

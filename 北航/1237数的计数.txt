@@ -1,0 +1,29 @@
+#include <iostream>
+#include <cstdio>
+#include <cstdlib>
+using namespace std;
+int howmany(int n)
+{
+	if (n==1)
+	{
+		return 1;
+	}
+	int i,count=1;
+	for (i=1;i<=n/2;i++)
+	{
+		count+=howmany(i);
+	}
+	return count;
+}
+int main()
+{
+	int t;
+	scanf("%d",&t);
+	while(t--)
+	{
+		int n;
+		scanf("%d",&n);
+		cout<<howmany(n)<<endl;
+	}
+	return 0;
+}

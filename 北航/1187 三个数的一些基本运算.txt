@@ -1,0 +1,38 @@
+三个数的一些基本运算
+时间限制：1000 ms  |  内存限制：8192 KB 
+描述 
+要求从键盘输入3个整数，并打印他们的和、平均值(如果不是整数，输出它的整数部分)、乘积、最小值和最大值。
+
+输入 
+输入第一行有一个整数n，表示下面有n组数据。下面的n行，每行包括用空格隔开的3个int类型整数。
+
+输出 
+输出n行，每行分别为相应输入行三个数的和、平均值、乘积、最小值和最大值，用空格隔开。
+
+样例输入 
+1
+13 27 14样例输出 
+54 18 4914 13 27
+
+#include<iostream>
+#include<algorithm>
+#include<sstream>
+#include<vector>
+#include<iomanip>
+using namespace std;
+int main()
+{
+	int n;
+	cin>>n;
+	while(n--)
+	{
+		int a,b,c;
+		cin>>a>>b>>c;
+		int min=a,max=a;
+		if(b<min) min=b;
+		if(b>max) max=b;
+		if(c<min) min=c;
+		if(c>max) max=c;
+		cout<<a+b+c<<" "<<(a+b+c)/3<<" "<<a*b*c<<" "<<min<<" "<<max<<endl;
+	}
+}

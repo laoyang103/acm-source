@@ -1,0 +1,38 @@
+平均数和标准差
+时间限制：1000 ms  |  内存限制：8192 KB 
+描述 
+求5个数的平均数和标准差。
+
+输入 
+第一行一个正整数T，表示有T组测试数据。以下每行是一组数，每组数由空格分开的5个正整数构成，每个整数不大于1000。
+
+输出 
+对于每组数据输出一行，即平均数和标准差，两个数据均保留3位小数，并且以一个空格隔开。
+
+样例输入 
+2
+1 1 1 1 1
+1 2 3 4 6样例输出 
+1.000 0.000
+3.200 1.720
+
+#include<iostream>
+#include<algorithm>
+#include<sstream>
+#include<vector>
+#include<iomanip>
+#include<cmath>
+using namespace std;
+int main()
+{
+	int n;
+	cin>>n;
+	while(n--)
+	{
+		double a,b,c,d,e,adv,sum;
+		cin>>a>>b>>c>>d>>e;
+		adv=(a+b+c+d+e)/5;
+		sum=sqrt(((a-adv)*(a-adv)+(b-adv)*(b-adv)+(c-adv)*(c-adv)+(d-adv)*(d-adv)+(e-adv)*(e-adv))/5);
+		cout<<fixed<<setprecision(3)<<adv<<" "<<sum<<endl;
+	}
+}

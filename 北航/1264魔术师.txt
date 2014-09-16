@@ -1,0 +1,32 @@
+#include <iostream>
+#include <cstdio>
+#include <vector>
+using namespace std;
+vector<int> ivec;
+int main()
+{
+	int t;
+	scanf("%d",&t);
+	int n,m;
+	while (t--)
+	{
+		ivec.clear();
+		scanf("%d%d",&n,&m);
+		int i,tmp;
+		for (i=0;i<n;i++)
+		{
+			scanf("%d",&tmp);
+			ivec.push_back(tmp);
+		}
+		for (i=0;i<m;i++)
+		{
+			scanf("%d",&tmp);
+			if (tmp>ivec.size())
+			{
+				cout<<-1<<endl;
+			}
+			else cout<<ivec[tmp-1]<<endl;
+		}
+	}
+	return 0;
+}

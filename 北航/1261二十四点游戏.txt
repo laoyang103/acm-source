@@ -1,0 +1,131 @@
+#include<iostream>
+using namespace std;
+bool calcu(double n1,char p,double n2,double &result)
+{
+    if(p=='/'&&n2==0)
+        return false;
+    else
+    {
+        switch(p)
+        {
+            case '+':result=n1+n2;return true;
+            case '-':result=n1-n2;return true;
+            case '*':result=n1*n2;return true;
+            case '/':result=n1/n2;return true;
+            default:return false;
+        }
+    }
+}
+int main()
+{
+    int x;
+    cin>>x;
+    double num[4];
+    const char po[4]={'+','-','*','/'};
+    int counter;
+    double a,b,c;
+    for(int ii=0;ii<x;++ii)
+    {
+        counter=0;
+		int i;
+        for(i=0;i<4;++i)
+        {
+            cin>>num[i];
+        }
+        for(i=0;i<4;++i){
+            for(int j=0;j<4;++j){
+                if(j!=i){
+                    for(int k=0;k<4;++k){
+                        if(k!=i&&k!=j){
+                            for(int l=0;l<4;l++){
+                                if(l!=i&&l!=j&&l!=k)
+                                {//·ûºÅ
+                                    for(int m=0;m<4;++m){
+                                        for(int n=0;n<4;++n){
+                                            for(int q=0;q<4;++q)
+                                            {//
+                                                int tag=0;
+                                                if(po[q]=='*'||po[q]=='/')
+                                                    tag=-1;
+                                                if(po[n]=='*'||po[n]=='/')
+                                                {
+                                                    if(tag==-1)
+                                                    {
+                                                        tag=2;
+                                                    }
+                                                    else
+                                                    {
+                                                        tag=-2;
+                                                    }
+                                                }
+                                                switch(tag)
+                                                {
+                                                    case 0:if(!calcu(num[i],po[m],num[j],a))break;
+                                                            if(!calcu(a,po[n],num[k],b))break;
+                                                            if(!calcu(b,po[q],num[l],c))break;
+                                                            if(c==24)
+                                                            counter++;
+                                                            break;
+
+                                                    case -1:if(!calcu(num[i],po[m],num[j],a))break;
+                                                            if(!calcu(num[k],po[q],num[l],b))break;
+                                                            if(!calcu(a,po[n],b,c))break;
+                                                            if(c==24)counter++;
+                                                            break;
+                                                    case -2:if(po[m]=='*'||po[m]=='/')
+                                                            {
+                                                                if(!calcu(num[i],po[m],num[j],a))break;
+                                                                if(!calcu(a,po[n],num[k],b))break;
+                                                                if(!calcu(b,po[q],num[l],c))break;
+                                                                if(c==24)
+                                                              counter++;
+                                                                break;
+                                                            }
+                                                            else
+                                                            {
+                                                                if(!calcu(num[j],po[n],num[k],a))break;
+                                                                if(!calcu(num[i],po[m],a,b))break;
+                                                                if(!calcu(b,po[q],num[l],c))break;
+                                                                if(c==24)counter++;
+                                                                break;
+                                                            }
+                                                    case 2:if(po[m]=='*'||po[m]=='/')
+                                                            {
+                                                                if(!calcu(num[i],po[m],num[j],a))break;
+                                                                if(!calcu(a,po[n],num[k],b))break;
+                                                                if(!calcu(b,po[q],num[l],c))break;
+                                                                if(c==24)
+                                                                counter++;
+                                                                break;
+                                                            }
+                                                            else
+                                                            {
+                                                                if(!calcu(num[j],po[n],num[k],a))break;
+                                                                if(!calcu(a,po[q],num[l],b))break;
+                                                                if(!calcu(num[i],po[m],b,c))break;
+                                                                if(c==24)counter++;
+                                                                break;
+                                                            }
+                                                }
+                                                if(counter>0)goto output;
+                                            }
+                                        }
+                                        
+                                    }
+                                }
+                               
+                            }
+                        }
+                   
+                    }
+                }
+            }
+        }
+
+output:       if(counter>0)
+        cout<<"Yes."<<endl;
+        else
+        cout<<"No."<<endl;
+    }
+    return 0;
+}

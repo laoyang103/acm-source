@@ -1,0 +1,17 @@
+#include<iostream>
+#include<string>
+#include<iomanip>
+#include<cmath>
+using namespace std;
+int main()
+{
+	int n;
+	cin>>n;
+	while(n--)
+	{
+		double a,b,c,d;
+		cin>>a>>b>>c>>d;
+		cout<<fixed<<setprecision(3)<<sqrt((a-c)*(a-c)+(b-d)*(b-d))<<endl;
+	}
+	return 0;
+}

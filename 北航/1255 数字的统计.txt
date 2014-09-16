@@ -1,0 +1,29 @@
+#include<iostream>
+#include<string>
+#include<algorithm>
+#include<map>
+using namespace std;
+int main()
+{
+	int n;
+//	cin>>n;
+//	while(n--)
+//	{
+		map<char,int> ma;
+		char c;
+		while(cin>>c)
+		{
+			if(c=='.') break;
+			ma[c]++;
+		}
+		map<char,int>::iterator it;
+		int j;
+		for(it=ma.begin(),j=0;it!=ma.end();it++,j++)
+		{
+			if(j) cout<<",";
+			cout<<it->first<<":"<<it->second;
+		}
+		cout<<endl;
+	//}
+	return 0;
+}

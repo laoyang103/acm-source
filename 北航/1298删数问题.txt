@@ -1,0 +1,60 @@
+#include <iostream>
+#include <cstdio>
+#include <string>
+using namespace std;
+int main()
+{
+	int t;
+	cin>>t;
+	int n,s,i,j;
+	
+	while(t--)
+	{
+		cin>>n>>s;
+		string str;
+		cin>>str;
+		int min=255,flag=0,rem;
+		for(i=0;i<s+1;i++)
+		{
+			if (str[i]!='0'&&str[i]<min)
+			{
+				min=str[i];
+				flag=i;
+			}
+		}
+		rem=s-flag;
+		str.erase(0,flag);
+		if (rem==0)
+		{
+			cout<<str<<endl;
+			continue;
+		}
+		int count=0;
+		for (i=0;i<rem;i++)
+		{
+			if (count==rem)
+			{
+				break;
+			}
+			for(j=1;j<str.length()-1;j++)
+			{
+				if (str[j]>str[j+1])
+				{
+					str.erase(j,1);
+					count++;
+					break;
+				}
+			}
+		}
+		if (count<rem)
+		{
+			for(i=0,j=str.length()-1;i<rem-count;i++)
+			{
+				str.erase(j,j+1);
+				j--;
+			}
+		}
+		cout<<str<<endl;
+	}
+	return 0;
+}

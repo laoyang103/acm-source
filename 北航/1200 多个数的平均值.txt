@@ -1,0 +1,44 @@
+多个数的平均值
+时间限制：1000 ms  |  内存限制：8192 KB 
+描述 
+确定用户输入的m个数的平均值。
+
+输入 
+先给出数据的组数T，对于每组数据，输入有两行，第一行是用户要输入的数的个数m，第二行是m个用空格隔开的int类型整数。
+
+输出 
+每组输入数据输出只有一行，为用户输入的m个数的平均数，用double类型表示，保留两位小数。
+
+样例输入 
+2 
+5
+2 3 7 5 3
+2 
+－1 －9
+样例输出 
+4.00
+-5.00
+
+#include<iostream>
+#include<algorithm>
+#include<sstream>
+#include<vector>
+#include<iomanip>
+using namespace std;
+int main()
+{
+	int n;
+	cin>>n;
+	while(n--)
+	{
+		double m,a,sum=0;
+		cin>>m;
+		int i;
+		for(i=1;i<=m;i++)
+		{
+			cin>>a;
+			sum+=a;
+		}
+		cout<<fixed<<setprecision(2)<<sum/m<<endl;
+	}
+}

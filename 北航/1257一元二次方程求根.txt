@@ -1,0 +1,49 @@
+#include <iostream>
+#include <cstdio>
+#include <cmath>
+using namespace std;
+int main()
+{
+	int n;
+	cin>>n;
+	double a,b,c,delta;
+	double x1,x2;
+	while(n--)
+	{
+		cin>>a>>b>>c;
+		if (a==b&&b==c&&a==0)
+		{
+			cout<<"Inf."<<endl;
+			continue;
+		}
+		if (a==b&&a==0)
+		{
+			cout<<"No answer."<<endl;
+			continue;
+		}
+		if (a==0&&b!=0)
+		{
+			printf("%.3f\n",c*(-1)/b);
+			continue;
+		}
+		delta=b*b-4*a*c;
+		if (abs(delta)<10e-5)
+		{
+			x1=(-1)*b/2/a;
+			printf("%.3f\n",x1);
+			continue;
+		}
+		if (delta>0)
+		{
+			x1=((-1)*b+sqrt(delta))/2/a;
+			x2=((-1)*b-sqrt(delta))/2/a;
+			printf("%.3f %.3f\n",x2,x1);
+			continue;
+		}
+		if (delta<0)
+		{
+			cout<<"No real."<<endl;
+		}
+	}
+	return 0;
+}

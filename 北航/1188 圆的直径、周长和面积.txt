@@ -1,0 +1,28 @@
+圆的直径、周长和面积
+时间限制：1000 ms  |  内存限制：8192 KB 
+描述 
+要求读入一个圆的半径，并打印圆的直径、周长和面积。PI的取常量3.1415926。
+
+输入 
+输入只有一行，一个double类型的数。
+
+输出 
+输出只有一行，分别为圆的直径、周长和面积，分别用空格隔开，要求精确到小数点后两位。
+
+样例输入 
+1
+样例输出 
+2.00 6.28 3.14
+
+#include<iostream>
+#include<algorithm>
+#include<sstream>
+#include<vector>
+#include<iomanip>
+using namespace std;
+int main()
+{
+	double n;
+	cin>>n;
+	cout<<fixed<<setprecision(2)<<n*2<<" "<<2*3.1415926*n<<" "<<3.1415926*n*n<<endl;
+}

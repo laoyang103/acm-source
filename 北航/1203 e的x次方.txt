@@ -1,0 +1,36 @@
+e的x次方
+时间限制：1000 ms  |  内存限制：8192 KB 
+描述 
+根据公式计算数值ex = 1 + x/1! + x2/2! + x3/3! + …
+
+输入 
+第一行是测试数据组数n，下面有n行，每行有一个整数x。
+
+输出 
+对每行输入数据输出一行，输出对应的e的x次方，精确到小数点后5位。
+
+样例输入 
+2
+1
+10样例输出 
+2.71828
+22026.46579
+
+#include<iostream>
+#include<algorithm>
+#include<sstream>
+#include<vector>
+#include<iomanip>
+#include<cmath>
+using namespace std;
+int main()
+{
+	int n;
+	cin>>n;
+	while(n--)
+	{
+		int m;
+		cin>>m;
+		cout<<fixed<<setprecision(5)<<exp(m*1.0)<<endl;
+	}
+}

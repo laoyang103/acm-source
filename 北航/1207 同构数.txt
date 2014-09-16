@@ -1,0 +1,35 @@
+同构数
+时间限制：1000 ms  |  内存限制：8192 KB 
+描述 
+正整数n若是它平方数的尾部，则称n为同构数。例如，6是其平方数36的尾部，76是其平方数5776的尾部，6与76都是同构数。376*376＝141376，因此376也是。要求写程序找出10000（包括）以内的所有同构数。
+
+输入 
+（无）
+
+输出 
+依次从小到大打印出所有同构数，每行一个。
+
+样例输入 
+(无)样例输出 
+(无)
+
+
+#include<iostream>
+#include<algorithm>
+#include<sstream>
+#include<vector>
+#include<iomanip>
+#include<cmath>
+using namespace std;
+int main()
+{
+	int i;
+	for(i=1;i<=10000;i++)
+	{
+		int n=i*i;
+		if(i<10 && n%10==i) cout<<i<<endl;
+		else if(i<100 && n%100==i) cout<<i<<endl;
+			else if(i<1000 && n%1000==i) cout<<i<<endl;
+	else if(i<10000 && n%10000==i) cout<<i<<endl;
+	}
+}

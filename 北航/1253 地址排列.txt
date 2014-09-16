@@ -1,0 +1,21 @@
+#include<iostream>
+#include<string>
+#include<algorithm>
+#include<set>
+using namespace std;
+int main()
+{
+	int n;
+	cin>>n;
+	set<string> se;
+	while(n--)
+	{
+		string s;
+		cin>>s;
+		se.insert(s);
+	}
+	set<string>::iterator it;
+	for(it=se.begin();it!=se.end();it++)
+		cout<<*it<<endl;
+	return 0;
+}

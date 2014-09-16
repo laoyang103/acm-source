@@ -1,0 +1,45 @@
+#include <iostream>
+#include <cstdio>
+using namespace std;
+int a[105];
+void swap(int b,int e)
+{
+	int tmp;
+	tmp=a[b];
+	a[b]=a[e];
+	a[e]=tmp;
+}
+void reverse(int b,int e)
+{
+	int i,j;
+	for (i=b,j=e;i<j;i++,j--)
+	{
+		swap(i,j);
+	}
+}
+int main()
+{
+	int t;
+	scanf("%d",&t);
+	int i;
+	while(t--)
+	{
+		int n,m,b,e;
+		for (i=1;i<105;i++)
+		{
+			a[i]=i;
+		}
+		cin>>n>>m;
+		while(m--)
+		{
+			cin>>b>>e;
+			reverse(b,e);
+		}
+		for (i=1;i<n;i++)
+		{
+			cout<<a[i]<<" ";
+		}
+		cout<<a[n]<<endl;
+	}
+	return 0;
+}

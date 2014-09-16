@@ -1,0 +1,40 @@
+A+B Problem
+时间限制：1000 ms  |  内存限制：65535 KB 
+描述 
+计算 a+b.
+
+输入 
+本题有多组测试数据。第一行为测试数据的个数。每组数据有两个整数。范围在 -231 ~ +231-1 之内。
+
+输出 
+对每组数据，输出对应的a+b的和。范围在 -231 ~ +231-1 之内。
+
+样例输入 
+2
+1 2
+3 1样例输出 
+3
+4
+
+
+
+
+
+
+#include<iostream>
+#include<algorithm>
+#include<sstream>
+#include<vector>
+using namespace std;
+int main()
+{
+	int n;
+	cin>>n;
+	for(int i=1;i<=n;i++)
+	{
+		int a,b;
+		cin>>a>>b;
+		cout<<a+b<<endl;
+	}
+	return 0;
+}

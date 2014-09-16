@@ -1,0 +1,29 @@
+#include<iostream>
+#include<algorithm>
+#include<sstream>
+#include<vector>
+#include<iomanip>
+#include<cmath>
+using namespace std;
+int main()
+{
+	int aa[10001]={0};
+ aa[1]=1;
+ int i,j;
+ for(i=3;i<=10001;i+=2)
+ {
+  if(aa[i]==0)
+   for(j=i*i;j<=10001;j+=i*2)
+    aa[j]=1;
+ }
+	int n;
+	cin>>n;
+	for(i=1;i<=n;i++)
+	{
+		int a;
+		cin>>a;
+		if(aa[a]==1) cout<<"0"<<endl;
+		else cout<<"1"<<endl;
+	}
+	return 0;
+}

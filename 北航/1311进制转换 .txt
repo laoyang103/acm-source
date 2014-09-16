@@ -1,0 +1,42 @@
+#include <iostream>
+#include <cstdio>
+using namespace std;
+int a[31];
+int main()
+{
+	int i;
+	a[0]=1;
+	for (i=1;i<31;i++)
+	{
+		a[i]=1<<i;
+	}
+	int t;
+	scanf("%d",&t);
+	int n;
+	while(t--)
+	{
+		
+		scanf("%d",&n);
+		if (n==0)
+		{
+			cout<<0<<endl;
+			continue;
+		}
+		int flag=false;
+		for (i=30;i>=0;i--)
+		{
+			if (n/a[i]!=0)
+			{
+				flag=true;
+			}
+			if (flag)
+			{
+//				cout<<n/a[i]==0?0:1;
+				printf("%d",n/a[i]==0?0:1);
+				n=n%a[i];
+			}
+		}
+		printf("\n");
+	}
+	return 0;
+}

@@ -1,0 +1,43 @@
+多个整数的和
+时间限制：1000 ms  |  内存限制：8192 KB 
+描述 
+确定用户输入的m个数的和。
+
+输入 
+先给出数据的组数T，对于每组数据，输入有两行，第一行为用户要输入的数个数m(m<1000)，第二行为m个用空格隔开的int类型整数。
+
+输出 
+每组数据输出只有一行，为用户输入的m个数的和。
+
+样例输入 
+2
+5
+1 2 3 4 5
+2
+-1 -9样例输出 
+15
+-10
+
+#include<iostream>
+#include<algorithm>
+#include<sstream>
+#include<vector>
+#include<iomanip>
+using namespace std;
+int main()
+{
+	int n;
+	cin>>n;
+	while(n--)
+	{
+		int m,a,sum=0;
+		cin>>m;
+		int i;
+		for(i=1;i<=m;i++)
+		{
+			cin>>a;
+			sum+=a;
+		}
+		cout<<sum<<endl;
+	}
+}

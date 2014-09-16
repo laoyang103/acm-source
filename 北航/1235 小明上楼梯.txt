@@ -1,0 +1,22 @@
+#include<iostream>
+#include<algorithm>
+#include<sstream>
+#include<vector>
+#include<iomanip>
+using namespace std;
+int main()
+{
+	int a[41],i,j;;
+	a[1]=1;a[2]=2;
+	for(i=3;i<=40;i++)
+		a[i]=a[i-1]+a[i-2];
+	int n;
+	cin>>n;
+	while(n--)
+	{
+		int b;
+		cin>>b;
+		cout<<a[b]<<endl;
+	}
+		return 0;
+}

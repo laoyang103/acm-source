@@ -1,0 +1,15 @@
+#include<iostream>
+#include<sstream>
+#include<algorithm>
+#include<iomanip>
+#include<cmath>
+#include<vector>
+#include<stdio.h>
+using namespace std;
+int main()
+{
+	cout<<" Happy \\birthday/ Yang Ting"<<endl;
+	cout<<"We will \\always/ love you!!!"<<endl;
+	return 0;
+}
+

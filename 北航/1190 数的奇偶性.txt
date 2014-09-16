@@ -1,0 +1,37 @@
+数的奇偶性
+时间限制：1000 ms  |  内存限制：8192 KB 
+描述 
+输入一个整数。确定他是奇数还是偶数。
+
+输入 
+输入第一行有一个整数n，表示下面有n组数据。下面的n行，每行包括 一个int类型整数。
+
+输出 
+输出有 n 行，每行是整数0或1，对应相应输入行的结果。如果对应输入行是奇数，则输出 1，否则，输出 0。
+
+样例输入 
+2
+14
+13
+样例输出 
+0
+1
+
+#include<iostream>
+#include<algorithm>
+#include<sstream>
+#include<vector>
+#include<iomanip>
+using namespace std;
+int main()
+{
+	int n;
+	cin>>n;
+	while(n--)
+	{
+		int a;
+		cin>>a;
+		if(a%2) cout<<"1"<<endl;
+		else cout<<"0"<<endl;
+	}
+}

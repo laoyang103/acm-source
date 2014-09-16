@@ -1,0 +1,16 @@
+#include<iostream>
+#include<string>
+#include<algorithm>
+#include<iomanip>
+#include<cmath>
+#include<vector>
+using namespace std;
+int main()
+{
+	int t;
+	while(cin>>t)
+		if(t!=153 && t!=370 && t!=371 && t!=407) cout<<"No"<<endl;
+		else cout<<"Yes"<<endl;
+	return 0;
+}
+
