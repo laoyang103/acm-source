@@ -1,0 +1,3 @@
+%packager laoyang
+%_topdir /home/laoyang/rpm
+%_tmppath /home/laoyang/rpm/tmp
