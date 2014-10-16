@@ -294,7 +294,6 @@
     <packagereq type='mandatory'>pixman</packagereq>
     <packagereq type='mandatory'>pulseaudio-libs</packagereq>
     <packagereq type='mandatory'>rhino</packagereq>
-    <packagereq type='mandatory'>tcpreplay</packagereq>
     <packagereq type='mandatory'>telnet</packagereq>
     <packagereq type='mandatory'>tzdata-java</packagereq>
     <packagereq type='mandatory'>urw-fonts</packagereq>
