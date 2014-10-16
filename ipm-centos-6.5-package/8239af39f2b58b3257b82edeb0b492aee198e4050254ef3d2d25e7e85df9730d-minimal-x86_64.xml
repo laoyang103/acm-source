@@ -220,8 +220,8 @@
   </category>
 
   <group>
-    <id>ipm</id>
-    <name>Ipm</name>
+    <id>ipm-requires</id>
+    <name>Ipm-Requires</name>
     <description/>
     <default>true</default>
     <uservisible>false</uservisible>
@@ -294,7 +294,6 @@
     <packagereq type='mandatory'>pixman</packagereq>
     <packagereq type='mandatory'>pulseaudio-libs</packagereq>
     <packagereq type='mandatory'>rhino</packagereq>
-    <packagereq type='mandatory'>rrdtool</packagereq>
     <packagereq type='mandatory'>tcpreplay</packagereq>
     <packagereq type='mandatory'>telnet</packagereq>
     <packagereq type='mandatory'>tzdata-java</packagereq>
@@ -304,12 +303,35 @@
   </group>
 
   <category>
-    <id>ipm</id>
-    <name>Ipm</name>
-    <description>Ipm server packages set</description>
+    <id>ipm-requires</id>
+    <name>Ipm-Requires</name>
+    <description>Ipm server packages requires</description>
     <display_order>60</display_order>
     <grouplist>
-      <groupid>ipm</groupid>
+      <groupid>ipm-requires</groupid>
+    </grouplist>
+  </category>
+
+  <group>
+    <id>ipm-service</id>
+    <name>Ipm-Service</name>
+    <description/>
+    <default>true</default>
+    <uservisible>false</uservisible>
+    <packagelist>
+    <packagereq type='mandatory'>ipmtube</packagereq>
+    <packagereq type='mandatory'>ipms</packagereq>
+    <packagereq type='mandatory'>rrdtool</packagereq>
+    </packagelist>
+  </group>
+
+  <category>
+    <id>ipm-service</id>
+    <name>Ipm-Service</name>
+    <description>Ipm server data provider</description>
+    <display_order>60</display_order>
+    <grouplist>
+      <groupid>ipm-service</groupid>
     </grouplist>
   </category>
 
