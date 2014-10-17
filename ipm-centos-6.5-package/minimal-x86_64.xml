@@ -321,6 +321,7 @@
     <packagereq type='mandatory'>ipmtube</packagereq>
     <packagereq type='mandatory'>ipms</packagereq>
     <packagereq type='mandatory'>rrdtool</packagereq>
+    <packagereq type='mandatory'>apache-tomcat</packagereq>
     </packagelist>
   </group>
 
