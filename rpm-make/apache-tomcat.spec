@@ -33,6 +33,9 @@ tar -zxvf tomcat.tar.gz -C /opt/apache-tomcat-6.0.37
 chkconfig iptables off
 chkconfig mysqld on
 
+service mysqld start
+service iptables stop
+
 mysqladmin -uroot password '123456'
 mysql -uroot -p123456 < ipm.sql
 
