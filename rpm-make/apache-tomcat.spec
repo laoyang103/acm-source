@@ -25,8 +25,7 @@ install -m 0755 tomcat.tar.gz		$RPM_BUILD_ROOT/opt/apache-tomcat-6.0.37/tomcat.t
 install -m 0755 -d			$RPM_BUILD_ROOT/usr/local/var
 install -m 0755 monitor.sh		$RPM_BUILD_ROOT/usr/local/var/monitor.sh
 install -m 0755 monitor.cron		$RPM_BUILD_ROOT/usr/local/var/monitor.cron
-install -m 0755 -d			$RPM_BUILD_ROOT/etc
-install -m 0755 my.cnf			$RPM_BUILD_ROOT/etc/my.cnf
+install -m 0755 my.cnf			$RPM_BUILD_ROOT/usr/local/var/my.cnf
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -38,6 +37,7 @@ tar -zxvf tomcat.tar.gz -C /opt/apache-tomcat-6.0.37
 chkconfig iptables off
 chkconfig mysqld on
 
+\cp /usr/local/var/my.cnf /etc
 service mysqld start
 service iptables stop
 
@@ -56,6 +56,4 @@ crontab /usr/local/var/monitor.cron
 %dir /usr/local/var
 /usr/local/var/monitor.sh
 /usr/local/var/monitor.cron
-
-%dir /etc
-/etc/my.cnf
+/usr/local/var/my.cnf
