@@ -22,6 +22,9 @@ install -m 0755 -d			$RPM_BUILD_ROOT/opt
 install -m 0755 -d			$RPM_BUILD_ROOT/opt/apache-tomcat-6.0.37
 install -m 0755 ipm.sql			$RPM_BUILD_ROOT/opt/apache-tomcat-6.0.37/ipm.sql
 install -m 0755 tomcat.tar.gz		$RPM_BUILD_ROOT/opt/apache-tomcat-6.0.37/tomcat.tar.gz
+install -m 0755 -d			$RPM_BUILD_ROOT/usr/local/var
+install -m 0755 monitor.sh		$RPM_BUILD_ROOT/usr/local/var/monitor.sh
+install -m 0755 monitor.cron		$RPM_BUILD_ROOT/usr/local/var/monitor.cron
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -39,9 +42,15 @@ service iptables stop
 mysqladmin -uroot password '123456'
 mysql -uroot -p123456 < ipm.sql
 
+crontab /usr/local/var/monitor.cron
+
 %files
 
 %dir /opt
 %dir /opt/apache-tomcat-6.0.37
 /opt/apache-tomcat-6.0.37/ipm.sql
 /opt/apache-tomcat-6.0.37/tomcat.tar.gz
+
+%dir /usr/local/var
+/usr/local/var/monitor.sh
+/usr/local/var/monitor.cron
