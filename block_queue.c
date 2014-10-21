@@ -1,175 +1,138 @@
 #include <stdio.h>
 #include <string.h>
 
-#define BQ_NODE_DATA_LEN 5
-
-#define MAX(a, b) a > b ? a:b
-#define MIN(a, b) a > b ? b:a
+#define BQ_HEAD 0
+#define BQ_SIZE 22
 
 typedef struct _bq_node
 {
     int index;
     int next;
-    int hd_start;
-    int hd_end;
-    char data[BQ_NODE_DATA_LEN];
-    char used[BQ_NODE_DATA_LEN];
+    int net_index;
+    char data;
+    char stat;
 } bq_node;
 
-
+bq_node global_bq[BQ_SIZE];
 
 void init_block_queue(bq_node *bq, int size)
 {
     int i;
 
-    bq[0].hd_start = 0;         /* The block queue head node point */ 
-    bq[0].hd_end = size - 1;    /* The block queue tail node point */ 
-    bq[0].next = 1;             /* The block queue first node point, head node has no data */
+    bq[BQ_HEAD].index = 0;                /* The block queue head node point */ 
+    bq[BQ_HEAD].net_index = size - 1;     /* The block queue tail node point */ 
+    bq[BQ_HEAD].next = 1;                 /* The block queue first node point, head node has no data */
 
     for (i = 1;i < size;i++) {
         bq[i].index = i;
+        bq[i].net_index = i;
         bq[i].next = i + 1;
-        bq[i].hd_start = (i-1)*BQ_NODE_DATA_LEN;
-        bq[i].hd_end= i*BQ_NODE_DATA_LEN - 1;
+        bq[i].stat = bq[i].data = 0;
     }
-    bq[bq[0].hd_end].next = -1;
+    bq[bq[BQ_HEAD].net_index].next = -1;  /* The last node */
 }
 
 void en_block_queue(bq_node *bq, char *en_data, int pos, int len)
 {
-    int i, head;
-    int data_idx = 0;
-    int data_start = pos;
-    int data_end = pos + len - 1;
+    int i = 0;
+    int fill_len = 0;
+    int fill_pos = pos;
 
-    head = bq[0].hd_start;
-
-    bq_node *curr = &bq[bq[head].next];
+    bq_node *curr = &bq[bq[BQ_HEAD].next];
     for (;-1 != curr->next;curr = &bq[curr->next]) {
-        if (curr->hd_start > data_end || curr->hd_end < data_start) {
+        if (fill_len >= len) break;
+        if (fill_pos == curr->net_index) {
+            curr->stat = 1;
+            curr->data = en_data[fill_len];
+            fill_pos++;
+            fill_len++;
+        } else if (curr->net_index < fill_pos) {
             continue;
-        }
-
-        for (i = curr->hd_start;i <= curr->hd_end;i++) {
-            if (i >= data_start && i <= data_end) {
-                data_idx = i - curr->hd_start;
-                curr->used[data_idx] = 1;
-                curr->data[data_idx] = en_data[i - pos];
-            }
+        } else {
+            break;
         }
     }
 }
 
 void print_block_queue(bq_node *bq)
 {
-    int i, head;
-    head = bq[0].hd_start;
-
-    bq_node *curr = &bq[bq[head].next];
+    int line = 1;
+    bq_node *curr = &bq[bq[BQ_HEAD].next];
     for (;-1 != curr->next;curr = &bq[curr->next]) {
-        for (i = 0;i < BQ_NODE_DATA_LEN;i++) {
-            if (0 == curr->data[i]) {
-                printf(".");
-            } else {
-                printf("%c", curr->data[i]);
-            }
+        if (0 == curr->data) {
+            printf(".");
+        } else {
+            printf("%c", curr->data);
         }
-        puts("");
+        if (0 == (line++ % 5)) {
+            puts("");
+        }
     }
 }
 
 int de_block_queue(bq_node *bq, char *buf, int buf_len) 
 {
-    int i, head;
+    int copy_len = 0;
+    bq_node *head_node = NULL;
+    bq_node *tail_node = NULL;
+    bq_node *curr = &bq[bq[BQ_HEAD].next];
 
-    head = bq[0].hd_start;
-    bq_node *curr = &bq[bq[head].next];
+    for (;-1 != curr->next;curr = &bq[bq[BQ_HEAD].next]) {
+        if (0 == curr->stat) break;
+        if (copy_len >= buf_len) break;
 
-    if(buf_len <= BQ_NODE_DATA_LEN) {
-        fprintf(stderr, "BLOCK_QUEUE: buffer len must large than %d.\n", BQ_NODE_DATA_LEN);
-        return 0;
+        buf[copy_len++] = curr->data;
+        curr->data = curr->stat = 0;
+
+        head_node = &bq[bq[BQ_HEAD].index];
+        tail_node = &bq[bq[BQ_HEAD].net_index];
+
+        curr->net_index = tail_node->net_index + 1;
+        head_node->next = curr->next;
+        curr->next = tail_node->next;
+        tail_node->next = curr->index;
+
+        bq[BQ_HEAD].net_index = curr->index;
     }
-
-    for (i = 0;i < BQ_NODE_DATA_LEN;i++) {
-        if (!curr->used[i]) {
-            return 0;
-        } else {
-            buf[i] = curr->data[i];
-            curr->used[i] = 0;
-        }
-    }
-
-    bq_node *head_node = &bq[bq[0].hd_start];
-    bq_node *tail_node = &bq[bq[0].hd_end];
-
-    curr->hd_start = tail_node->hd_end + 1;
-    curr->hd_end = curr->hd_start + BQ_NODE_DATA_LEN - 1;
-
-    head_node->next = curr->next;
-    curr->next = tail_node->next;
-    tail_node->next = curr->index;
-
-    bq[0].hd_end = curr->index;
-
-    return BQ_NODE_DATA_LEN;
+    return copy_len;
 }
 
 int main()
 {
-    int i, j;
+    int cp_len;
     char buf[100];
-    bq_node global_bq[10];
-
     memset(global_bq, 0, sizeof(global_bq));
-    init_block_queue(global_bq, 10);
+    init_block_queue(global_bq, BQ_SIZE);
 
-    char str0[] = "++++++++++";
+    char str0[] = "+++++";
     char str1[] = "----------";
-    char str2[] = "********************";
+    char str2[] = "****";
     char str3[] = "0000000000";
 
-    puts("================\n");
-    en_block_queue(global_bq, str0, 0, strlen(str0));
+    puts("================");
+    en_block_queue(global_bq, str0, 1, strlen(str0));
     print_block_queue(global_bq);
-    puts("================\n");
+    puts("================");
 
-    puts("================\n");
-    de_block_queue(global_bq, buf, 100);
-    print_block_queue(global_bq);
-    puts("================\n");
+    puts("================");
+    cp_len = de_block_queue(global_bq, buf, 3);
+    buf[cp_len] = 0;puts(buf);
+    puts("================");
 
-    puts("================\n");
+    puts("================");
     en_block_queue(global_bq, str1, 10, strlen(str1));
     print_block_queue(global_bq);
-    puts("================\n");
+    puts("================");
 
-    puts("================\n");
-    de_block_queue(global_bq, buf, 100);
+    puts("================");
+    en_block_queue(global_bq, str3, 16, strlen(str3));
     print_block_queue(global_bq);
-    puts("================\n");
+    puts("================");
 
-    puts("================\n");
-    en_block_queue(global_bq, str2, 30, strlen(str2));
-    print_block_queue(global_bq);
-    puts("================\n");
-
-    puts("================\n");
-    de_block_queue(global_bq, buf, 100);
-    de_block_queue(global_bq, buf, 100);
-    print_block_queue(global_bq);
-    puts("================\n");
-
-    puts("================\n");
-    en_block_queue(global_bq, str3, 50, strlen(str3));
-    print_block_queue(global_bq);
-    puts("================\n");
-    // puts("================");
-    // en_block_queue(global_bq, "fghijk", 15, 6);
-    // print_block_queue(global_bq);
-    // puts("================");
-    // en_block_queue(global_bq, "lmnopq", 9, 6);
-    // print_block_queue(global_bq);
-    // puts("================");
+    puts("================");
+    cp_len = de_block_queue(global_bq, buf, 100);
+    buf[cp_len] = 0;puts(buf);
+    puts("================");
 
     return 0;
 }
