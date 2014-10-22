@@ -44,6 +44,7 @@ service iptables stop
 mysqladmin -uroot password '123456'
 mysql -uroot -p123456 < ipm.sql
 
+ln -s -f  /usr/bin/twopi /usr/local/bin/twopi
 crontab /usr/local/var/monitor.cron
 
 %files
