@@ -26,6 +26,7 @@ install -m 0755 -d			$RPM_BUILD_ROOT/usr/local/var
 install -m 0755 monitor.sh		$RPM_BUILD_ROOT/usr/local/var/monitor.sh
 install -m 0755 monitor.cron		$RPM_BUILD_ROOT/usr/local/var/monitor.cron
 install -m 0755 my.cnf			$RPM_BUILD_ROOT/usr/local/var/my.cnf
+install -m 0755 rc.local		$RPM_BUILD_ROOT/usr/local/var/rc.local
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -44,6 +45,7 @@ service iptables stop
 mysqladmin -uroot password '123456'
 mysql -uroot -p123456 < ipm.sql
 
+\cp /usr/local/var/rc.local /etc
 ln -s -f  /usr/bin/twopi /usr/local/bin/twopi
 crontab /usr/local/var/monitor.cron
 
@@ -58,3 +60,4 @@ crontab /usr/local/var/monitor.cron
 /usr/local/var/monitor.sh
 /usr/local/var/monitor.cron
 /usr/local/var/my.cnf
+/usr/local/var/rc.local
