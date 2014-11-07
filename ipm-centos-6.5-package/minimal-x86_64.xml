@@ -283,6 +283,7 @@
     <packagereq type='mandatory'>mysql</packagereq>
     <packagereq type='mandatory'>mysql-libs</packagereq>
     <packagereq type='mandatory'>mysql-server</packagereq>
+    <packagereq type='mandatory'>numactl</packagereq>
     <packagereq type='mandatory'>pango</packagereq>
     <packagereq type='mandatory'>perl</packagereq>
     <packagereq type='mandatory'>perl-DBD-MySQL</packagereq>
