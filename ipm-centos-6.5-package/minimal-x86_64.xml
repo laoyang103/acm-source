@@ -231,10 +231,11 @@
     <packagereq type='mandatory'>avahi-libs</packagereq>
     <packagereq type='mandatory'>cairo</packagereq>
     <packagereq type='mandatory'>cups-libs</packagereq>
-    <packagereq type='mandatory'>dmidecode</packagereq>
+    <packagereq type='mandatory'>dsas</packagereq>
     <packagereq type='mandatory'>dejavu-fonts-common</packagereq>
     <packagereq type='mandatory'>dejavu-lgc-sans-mono-fonts</packagereq>
     <packagereq type='mandatory'>dejavu-sans-mono-fonts</packagereq>
+    <packagereq type='mandatory'>dmidecode</packagereq>
     <packagereq type='mandatory'>flac</packagereq>
     <packagereq type='mandatory'>fontconfig</packagereq>
     <packagereq type='mandatory'>fontpackages-filesystem</packagereq>
